@@ -28,7 +28,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel_rpassword = new javax.swing.JLabel();
         jLabel_Login_link = new javax.swing.JLabel();
         textField_remail = new java.awt.TextField();
-        textField_rpassword = new java.awt.TextField();
+        passwordField_rpassword = new javax.swing.JPasswordField();
         button_register = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,9 +55,9 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
-        textField_rpassword.addActionListener(new java.awt.event.ActionListener() {
+        passwordField_rpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField_rpasswordActionPerformed(evt);
+                passwordField_rpasswordActionPerformed(evt);
             }
         });
 
@@ -80,7 +80,7 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addComponent(jLabel_remail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_register, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(textField_remail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField_rpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordField_rpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(button_register, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(100, 100, 100))
         );
@@ -96,7 +96,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_rpassword)
                 .addGap(1, 1, 1)
-                .addComponent(textField_rpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField_rpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(button_register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -123,14 +123,14 @@ public class RegisterForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_remailActionPerformed
 
-    private void textField_rpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_rpasswordActionPerformed
+    private void passwordField_rpasswordActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_rpasswordActionPerformed
 
     private void button_registerActionPerformed(java.awt.event.ActionEvent evt) {
         // Get the email and password from the text fields
         String email = textField_remail.getText();
-        String password = textField_rpassword.getText();
+        String password = passwordField_rpassword.getText();
 
         // Validate that the fields are not empty
         if (!email.isEmpty() && !password.isEmpty()) {
@@ -159,7 +159,7 @@ public class RegisterForm extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Email and password cannot be empty!");
         }
-    }//GEN-LAST:event_button_registerActionPerformed
+    }                                               
 
     /**
      * @param args the command line arguments
@@ -203,6 +203,6 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_remail;
     private javax.swing.JLabel jLabel_rpassword;
     private java.awt.TextField textField_remail;
-    private java.awt.TextField textField_rpassword;
+    private javax.swing.JPasswordField passwordField_rpassword;
     // End of variables declaration//GEN-END:variables
 }

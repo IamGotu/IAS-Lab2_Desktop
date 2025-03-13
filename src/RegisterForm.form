@@ -96,6 +96,7 @@
     </Component>
     <Component class="java.awt.TextField" name="textField_rpassword">
       <Events>
+        <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="textField_rpasswordComponentHidden"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textField_rpasswordActionPerformed"/>
       </Events>
     </Component>

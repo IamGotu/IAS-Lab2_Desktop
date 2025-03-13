@@ -28,7 +28,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel_login = new javax.swing.JLabel();
         jLabel_register_link = new javax.swing.JLabel();
         textField_lemail = new java.awt.TextField();
-        textField_lpassword = new java.awt.TextField();
+        passwordField_lpassword = new javax.swing.JPasswordField();
         button_login = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,9 +55,9 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        textField_lpassword.addActionListener(new java.awt.event.ActionListener() {
+        passwordField_lpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField_lpasswordActionPerformed(evt);
+                passwordField_lpasswordActionPerformed(evt);
             }
         });
 
@@ -80,7 +80,7 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jLabel_lemail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_login, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(textField_lemail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField_lpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordField_lpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(button_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(100, 100, 100))
         );
@@ -96,7 +96,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_lpassword)
                 .addGap(2, 2, 2)
-                .addComponent(textField_lpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField_lpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -123,14 +123,14 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_lemailActionPerformed
 
-    private void textField_lpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_lpasswordActionPerformed
+    private void passwordField_lpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordField_lpasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField_lpasswordActionPerformed
+    }//GEN-LAST:event_passwordField_lpasswordActionPerformed
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {
         // Get the email and password from the text fields
         String email = textField_lemail.getText();
-        String password = textField_lpassword.getText();
+        String password = passwordField_lpassword.getText();
     
         if (!email.isEmpty() && !password.isEmpty()) {
             // Call the FirebaseAuth.loginUser method
@@ -205,6 +205,6 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_lpassword;
     private javax.swing.JLabel jLabel_register_link;
     private java.awt.TextField textField_lemail;
-    private java.awt.TextField textField_lpassword;
+    private javax.swing.JPasswordField passwordField_lpassword;
     // End of variables declaration//GEN-END:variables
 }
