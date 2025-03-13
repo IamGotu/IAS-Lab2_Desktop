@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+import javax.swing.JOptionPane;
+import org.json.JSONObject;
 
 /**
  *
@@ -129,8 +127,40 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_lpasswordActionPerformed
 
-    private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        // TODO add your handling code here:
+    private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {
+        // Get the email and password from the text fields
+        String email = textField_lemail.getText();
+        String password = textField_lpassword.getText();
+    
+        if (!email.isEmpty() && !password.isEmpty()) {
+            // Call the FirebaseAuth.loginUser method
+            JSONObject response = FirebaseAuth.loginUser(email, password);
+            if (response != null) {
+                // Login successful
+                String idToken = response.getString("idToken"); // Get the ID token from the response
+    
+                // Fetch user data
+                JSONObject userData = FirebaseAuth.getUserData(idToken);
+                if (userData != null) {
+                    boolean emailVerified = userData.getJSONArray("users").getJSONObject(0).getBoolean("emailVerified");
+                    if (emailVerified) {
+                        JOptionPane.showMessageDialog(this, "Login successful!");
+                        // Open the DashboardForm and pass the user's email
+                        DashboardForm dashboardForm = new DashboardForm(email);
+                        dashboardForm.setVisible(true);
+                        this.dispose(); // Close the current login form
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Please verify your email before logging in.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to fetch user data. Please try again.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Login failed. Please check your email and password.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Email and password cannot be empty!");
+        }
     }//GEN-LAST:event_button_loginActionPerformed
 
     /**
