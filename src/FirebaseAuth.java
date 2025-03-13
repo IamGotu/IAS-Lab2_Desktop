@@ -87,4 +87,84 @@ public class FirebaseAuth {
             return false; // Failed due to an exception
         }
     }
+
+    public static JSONObject getUserData(String idToken) {
+        try {
+            URL url = new URL("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=" + FIREBASE_API_KEY);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+    
+            // Create the JSON payload
+            JSONObject json = new JSONObject();
+            json.put("idToken", idToken);
+    
+            // Send the request
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = json.toString().getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+    
+            // Check the response code
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Parse the response
+                String response = new String(conn.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+                JSONObject responseJson = new JSONObject(response);
+                return responseJson; // Return the response JSON
+            } else {
+                // Parse the error response
+                String errorResponse = new String(conn.getErrorStream().readAllBytes(), StandardCharsets.UTF_8);
+                JSONObject errorJson = new JSONObject(errorResponse);
+                String errorMessage = errorJson.getJSONObject("error").getString("message");
+                System.out.println("Error: " + errorMessage);
+                return null; // Failed to fetch user data
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Failed due to an exception
+        }
+    }
+
+    public static JSONObject loginUser(String email, String password) {
+        try {
+            URL url = new URL("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + FIREBASE_API_KEY);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+    
+            // Create the JSON payload
+            JSONObject json = new JSONObject();
+            json.put("email", email);
+            json.put("password", password);
+            json.put("returnSecureToken", true);
+    
+            // Send the request
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = json.toString().getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+    
+            // Check the response code
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Parse the response
+                String response = new String(conn.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+                JSONObject responseJson = new JSONObject(response);
+                return responseJson; // Return the response JSON
+            } else {
+                // Parse the error response
+                String errorResponse = new String(conn.getErrorStream().readAllBytes(), StandardCharsets.UTF_8);
+                JSONObject errorJson = new JSONObject(errorResponse);
+                String errorMessage = errorJson.getJSONObject("error").getString("message");
+                System.out.println("Error: " + errorMessage);
+                return null; // Login failed
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null; // Login failed due to an exception
+        }
+    }
 }
