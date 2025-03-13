@@ -9,11 +9,15 @@
  */
 public class DashboardForm extends javax.swing.JFrame {
 
+    private String userEmail; // Store the user's email
+
     /**
      * Creates new form DashboardForm
      */
-    public DashboardForm() {
+    public DashboardForm(String userEmail) {
+        this.userEmail = userEmail; // Initialize the user's email
         initComponents();
+        jLabel_welcome.setText("Welcome, " + userEmail + "!"); // Display the user's email
     }
 
     /**
@@ -72,8 +76,11 @@ public class DashboardForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_logoutActionPerformed
-        // TODO add your handling code here:
+    private void button_logoutActionPerformed(java.awt.event.ActionEvent evt) {
+        // Open the LoginForm
+        LoginForm loginForm = new LoginForm();
+        loginForm.setVisible(true);
+        this.dispose(); // Close the current dashboard form
     }//GEN-LAST:event_button_logoutActionPerformed
 
     /**
